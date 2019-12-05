@@ -1,0 +1,93 @@
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a href="list-address" class="nav-link" routerLinkActive="active">Address List</a>
+        </li>
+        <li class="nav-item">
+            <a href="add-address" class="nav-link" routerLinkActive="active">Add Address</a>
+        </li>
+        <!---li class="nav-item">
+            <a href="purchaselist" class="nav-link" routerLinkActive="active"> Purchase Details</a>
+        </li-->
+        <!--li class="nav-item">
+            <a href="userRegistration" class="nav-link" routerLinkActive="active">User Registration</a>
+        </li-->
+        <!--li class="nav-item">
+            <a href="" class="nav-link" routerLinkActive="active"></a>
+        </li-->
+
+
+    </ul>
+    <!--button (click)="logout()" class="btn btn-primary">Logout</button-->
+
+</nav> 
+
+<input type="text" [(ngModel)]="searchstring" (ngModelChange)="searchaddress(searchstring)" placeholder="Search Address"
+class="form-control" style="width:500px;">
+
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2>Address List</h2>
+
+    </div>
+    <!--select required #mySelect (change)='onOptionsSelected(mySelect.value)'>
+        <option value="">Choose EmployeeCategory</option>
+        <option value="0" >All</option>
+        <option *ngFor="let emp of category | async" value="{{emp.categoryid}}">{{emp.categoryname}}</option>
+      </select-->
+
+    <div class="panel-body">
+        <table class="table table-striped">
+            <thead>
+                <!--div>
+                    <td> <button [routerLink]="['/assetadd']" class="btn btn-info"
+                            style="margin-left: 10px">Create Asset</button></td>
+                    
+
+                </div-->
+               
+                <tr>
+                    <th>AddressID</th>
+                    <th>Name</th>
+                    <th>Familyname</th>
+                    <th>DOB</th>
+                    <th>Street</th>
+                    <th>Pincode</th>
+                    <th>City</th>
+                    <th>Country</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                    <th>Occupation</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let address of addresses | async">
+                    <td>{{address.AddressId}}</td>
+                    <td>{{address.Name}}</td>
+                    <td>{{address.Familyname}}</td>
+                    <td>{{address.DOBStr}}</td>
+                    <td>{{address.Street}}</td>
+                    <td>{{address.Pincode}}</td>
+                    <td>{{address.City}}</td>
+                    <td>{{address.Country}}</td>
+                    <td>{{address.phone}}</td>
+                    <td>{{address.Email}}</td>
+                    <td>{{address.Occupation}}</td>
+
+                    <td><button [routerLink]="['/edit-address',address.AddressId]" class="btn btn-info"
+                            style="margin-left: 10px" >Edit</button>
+                        <button (click)="deleteaddress(address.AddressId)" class="btn btn-danger">Delete</button>
+                        <!--button class="btn btn-info" style="margin-left: 10px">Details</button-->
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+</div>
+

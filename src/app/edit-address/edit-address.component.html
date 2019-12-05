@@ -1,0 +1,76 @@
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a href="list-address" class="nav-link" routerLinkActive="active">Address List</a>
+        </li>
+        <li class="nav-item">
+            <a href="add-address" class="nav-link" routerLinkActive="active">Add Address</a>
+        </li>
+        <!---li class="nav-item">
+            <a href="purchaselist" class="nav-link" routerLinkActive="active"> Purchase Details</a>
+        </li-->
+        <!--li class="nav-item">
+            <a href="userRegistration" class="nav-link" routerLinkActive="active">User Registration</a>
+        </li-->
+        <!--li class="nav-item">
+            <a href="" class="nav-link" routerLinkActive="active"></a>
+        </li-->
+
+
+    </ul>
+    <!--button (click)="logout()" class="btn btn-primary">Logout</button-->
+
+</nav> 
+  
+  
+  <form [formGroup]="addressform"  (ngSubmit)="updateaddress()">
+
+      <div class="form-group" [ngClass]="{'has-error':isSubmitted && formControls.addressform.errors}">
+        <label for="Name">Name</label>
+        <input type="text" class="form-control"  #name [(ngModel)]="addresses.Name" placeholder="Enter name" formControlName="Name">
+      </div>
+      <div *ngIf="isSubmitted && formControls.addressform.errors" class="help-block">
+        <div *ngIf="formControls.addressform.errors.required">name is Required</div>
+    </div>
+      
+      <div class="form-group">
+        <label for="Familyname">Family Name</label>
+        <input type="text" class="form-control" #Familyname [(ngModel)]="addresses.Familyname" placeholder="Familyname" formControlName="Familyname">
+      </div>
+      <div class="form-group">
+        <label  for="DOBStr">Date Of Birth</label>
+        <input type="date" class="form-control" #DOB [(ngModel)]="addresses.DOBStr" formControlName="DOBStr">
+      </div>
+      <div class="form-group">
+              <label for="Street">Street</label>
+              <input type="text" class="form-control" #Street [(ngModel)]="addresses.Street" placeholder="Street" formControlName="Street">
+            </div>
+            <div class="form-group">
+                <label for="Pincode">Pincode</label>
+                <input type="number" class="form-control" #Pincode [(ngModel)]="addresses.Pincode" placeholder="Pincode" formControlName="Pincode">
+              </div>
+              <div class="form-group">
+                <label for="City">City</label>
+                <input type="text" class="form-control" #City [(ngModel)]="addresses.City" placeholder="City" formControlName="City">
+              </div>
+              <div class="form-group">
+                <label for="Country">Country</label>
+                <input type="text" class="form-control" #Country [(ngModel)]="addresses.Country" placeholder="Country" formControlName="Country">
+              </div>
+              <div class="form-group">
+                <label for="phone">phone</label>
+                <input type="number" class="form-control" #Phone [(ngModel)]="addresses.phone" placeholder="phone" formControlName="phone">
+              </div>  
+              <div class="form-group">
+                <label for="Email">Email</label>
+                <input type="email" class="form-control" #Email [(ngModel)]="addresses.Email" placeholder="Email" formControlName="Email">
+              </div> 
+              <div class="form-group">
+                <label for="Occupation">Occupation</label>
+                <input type="text" class="form-control" #Occupation [(ngModel)]="addresses.Occupation" placeholder="Occupation" formControlName="Occupation">
+              </div>
+                
+      <button type="submit" class="btn btn-primary" [disabled]="addressform.pristine || addressform.invalid">Submit</button>
+    </form>
+
